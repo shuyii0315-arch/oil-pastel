@@ -38,8 +38,9 @@ pre{margin:0;font:400 12.5px/1.65 'Geist Mono',ui-monospace,monospace;color:#3A3
 .spec{margin-top:36px;padding-top:24px;border-top:.5px solid rgba(26,26,26,.1)}
 .spec h2{font:500 15px Geist,system-ui,sans-serif;margin:0 0 8px}.lead{max-width:640px;font-size:14px;line-height:1.6;color:#55534F;margin:0 0 18px}
 #stage{position:absolute;inset:0}
-.slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease}
-.slide.on{opacity:1;pointer-events:auto}
+.slide{position:absolute;inset:0;opacity:0;pointer-events:none;transform:translateX(90px);transition:opacity .7s ease,transform .9s cubic-bezier(.25,.8,.25,1)}
+.slide.on{opacity:1;pointer-events:auto;transform:none}
+.slide.gone{transform:translateX(-90px)}
 .drawing{position:absolute;left:62%;top:52%;height:76%;max-width:58%;object-fit:contain;transform:translate(-50%,-50%) scale(.97);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.2,1) .18s,opacity .5s ease .18s}
 .slide.on .drawing{transform:translate(-50%,-50%) scale(1);opacity:1}
 .photo{position:absolute;left:7%;bottom:12%;width:23%;max-width:220px;background:#fff;padding:10px 10px 30px;box-shadow:0 2px 12px rgba(0,0,0,.08);transform:rotate(-6deg) translateY(10px);opacity:0;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .4s ease}
@@ -114,7 +115,7 @@ const slides=SET.map(([n,label],i)=>{const s=document.createElement('div');s.cla
  s.innerHTML=`<div class="photo"><img alt="Original photo" ${i?'loading="lazy"':''} src="img/${n}-photo.jpg"><span>original</span></div><img class="drawing" alt="Oil pastel drawing of the ${label.toLowerCase()}" ${i?'loading="lazy"':''} src="img/${n}-drawing.webp">`;
  stage.appendChild(s);const b=document.createElement('button');b.textContent=label;b.onclick=()=>{stop();go(i)};picker.appendChild(b);return s});
 let cur=-1,timer=null;
-function go(i){if(cur>=0){slides[cur].classList.remove('on');picker.children[cur].classList.remove('on')}cur=(i+slides.length)%slides.length;slides[cur].classList.add('on');picker.children[cur].classList.add('on');
+function go(i){if(cur>=0){slides.forEach(x=>x.classList.remove('gone'));slides[cur].classList.add('gone');slides[cur].classList.remove('on');picker.children[cur].classList.remove('on')}cur=(i+slides.length)%slides.length;slides[cur].classList.add('on');picker.children[cur].classList.add('on');
  slides[(cur+1)%slides.length].querySelectorAll('img').forEach(im=>im.loading='eager')}
 function stop(){clearInterval(timer);timer=null}
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
