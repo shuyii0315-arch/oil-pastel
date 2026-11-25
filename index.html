@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oil Pastel Scribble</title>
+<meta name="description" content="A skill that turns any photo into a loose, hand-drawn oil pastel illustration.">
+<meta property="og:image" content="https://shuyii0315-arch.github.io/oil-pastel/oil-pastel-card-poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1A1A1A;--bg:#FFFFFF}
+*{box-sizing:border-box;margin:0;padding:0}
+html{height:100%}body{min-height:100%}
+body{background:#fff;font-family:Geist,system-ui,sans-serif;color:#1A1A1A;-webkit-font-smoothing:antialiased;max-width:1040px;margin:0 auto;padding:0 28px 140px}
+.pg-top{display:flex;align-items:center;gap:8px;height:64px;font-size:13px;color:#8E8C87}.pg-top a{color:#1A1A1A;text-decoration:none}.pg-top b{font-weight:500}.pg-top i{font-style:normal;color:#C9C7C2}
+.demo{--bg:#F7F7F7;position:relative;height:min(640px,calc(100vh - 150px));min-height:460px;background:#F7F7F7;border-radius:22px;overflow:hidden;box-shadow:inset 0 0 0 .5px rgba(26,26,26,.06)}
+.dctl{position:absolute;top:16px;z-index:20;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(255,255,255,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 3px rgba(0,0,0,.05),inset 0 0 0 .5px rgba(26,26,26,.08)}.dctl.l{left:16px}.dctl.r{right:16px}
+.dctl button,.acts button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 11px;border-radius:999px;font:500 12.5px Geist,system-ui,sans-serif;color:#3A3936;transition:background .2s,color .2s}
+.dctl.l button{color:#8E8C87}.dctl.l button.on{background:#fff;color:#1A1A1A;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.dctl.r button{padding:0 8px}.dctl button:hover,.acts button:hover{background:rgba(26,26,26,.06)}.dctl.l button.on:hover{background:#fff}
+.dctl svg,.acts svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.info{padding:22px 4px 0}
+.ttl{display:flex;align-items:center;justify-content:space-between}.ttl h1{font:500 19px Geist,system-ui,sans-serif;letter-spacing:-.01em;margin:0}
+.acts{display:flex;gap:6px;align-items:center}.acts button{height:32px;padding:0 13px;box-shadow:inset 0 0 0 .5px rgba(26,26,26,.14)}
+.acts .gh{height:32px;display:inline-flex;align-items:center;gap:6px;padding:0 13px;border-radius:999px;font:500 12.5px Geist,system-ui,sans-serif;color:#3A3936;text-decoration:none;box-shadow:inset 0 0 0 .5px rgba(26,26,26,.14)}.acts .gh:hover{background:rgba(26,26,26,.05)}
+.desc{max-width:600px;font-size:14px;line-height:1.6;color:#55534F;margin:12px 0 14px}
+.uses{display:flex;align-items:center;gap:6px;font-size:12px;color:#8E8C87}.uses i{font-style:normal;padding:3px 9px;border-radius:999px;background:#F7F7F7;color:#55534F}
+.tabs{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:#F7F7F7}.tabs button{all:unset;cursor:pointer;height:28px;padding:0 13px;border-radius:999px;font:500 12.5px Geist,system-ui,sans-serif;color:#8E8C87;transition:background .2s,color .2s}.tabs button.on{background:#fff;color:#1A1A1A;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+body.m-full{max-width:none;padding:0;overflow:hidden;height:100%}body.m-full .pg-top,body.m-full .info{display:none}
+body.m-full .demo{position:fixed;inset:0;height:auto;min-height:0;border-radius:0;box-shadow:none}
+.row{border-radius:14px;background:#F7F7F7;margin-bottom:10px;overflow:hidden}
+.rh{display:flex;align-items:center;gap:12px;padding:10px 12px 10px 8px}
+.tg{all:unset;cursor:pointer;flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:4px 6px}.tg svg{width:15px;height:15px;flex:none;fill:none;stroke:#8E8C87;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.tg b{font:500 13.5px Geist,system-ui,sans-serif;flex:none}.tg span{font-size:12.5px;color:#8E8C87;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .body{display:none;padding:2px 22px 20px 38px}.row.open .body{display:block}.row.open .tg svg{transform:rotate(90deg)}
+pre.body{max-height:360px;overflow:auto}
+.note{font-size:13px;color:#55534F;margin:0 0 12px;line-height:1.5}.links{display:flex;gap:8px;margin-top:14px}
+.cp{all:unset;cursor:pointer;flex:none;height:28px;padding:0 12px;display:inline-flex;align-items:center;border-radius:999px;background:#fff;font:500 12px Geist,system-ui,sans-serif;color:#3A3936;box-shadow:0 1px 3px rgba(0,0,0,.08);text-decoration:none}.cp:hover{background:#fafafa}
+pre{margin:0;font:400 12.5px/1.65 'Geist Mono',ui-monospace,monospace;color:#3A3936;white-space:pre-wrap;word-break:break-word}
+@media (max-width:760px){body{padding:0 16px 96px}.pg-top{height:52px}.demo{height:min(520px,calc(100svh - 120px));min-height:380px;border-radius:18px}.dctl{top:12px}.dctl.l{left:12px;max-width:calc(100% - 120px);overflow-x:auto;scrollbar-width:none}.dctl.r{right:12px}.dctl.l button{padding:0 9px;flex:none}.dctl.r span{display:none}.uses{flex-wrap:wrap}.tabs{display:flex;overflow-x:auto;max-width:100%;scrollbar-width:none}.tabs button{flex:none;padding:0 10px;font-size:12px}.sp p{padding-top:0;max-width:none}.sp .rows{grid-template-columns:72px 1fr;padding:16px 18px}}
+
+.spec{margin-top:36px;padding-top:24px;border-top:.5px solid rgba(26,26,26,.1)}
+.spec h2{font:500 15px Geist,system-ui,sans-serif;margin:0 0 8px}.lead{max-width:640px;font-size:14px;line-height:1.6;color:#55534F;margin:0 0 18px}
+#stage{position:absolute;inset:0}
+.slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease}
+.slide.on{opacity:1;pointer-events:auto}
+.drawing{position:absolute;left:62%;top:52%;height:76%;max-width:58%;object-fit:contain;transform:translate(-50%,-50%) scale(.97);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.2,1) .18s,opacity .5s ease .18s}
+.slide.on .drawing{transform:translate(-50%,-50%) scale(1);opacity:1}
+.photo{position:absolute;left:7%;bottom:12%;width:23%;max-width:220px;background:#fff;padding:10px 10px 30px;box-shadow:0 2px 12px rgba(0,0,0,.08);transform:rotate(-6deg) translateY(10px);opacity:0;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .4s ease}
+.slide.on .photo{transform:rotate(-6deg);opacity:1}
+.photo img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.photo span{position:absolute;left:0;right:0;bottom:8px;text-align:center;font:400 11px 'Geist Mono',ui-monospace,monospace;color:#8E8C87}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:4px}
+.steps4 figure{margin:0}.steps4 img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;background:#F7F7F7}
+.steps4 figcaption{font-size:12.5px;line-height:1.5;color:#55534F;margin-top:8px}.steps4 figcaption b{display:block;font:400 11px 'Geist Mono',monospace;color:#8E8C87;margin-bottom:2px}
+.steps4 figure.win figcaption b{color:#E2723B}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;margin:0 0 30px;padding:0;list-style:none;font-size:14px;line-height:1.55;color:#55534F}.rules b{color:#1A1A1A;font-weight:500}
+.spec h2.sub{margin-top:34px}
+@media (max-width:760px){.drawing{left:50%;top:42%;height:62%;max-width:84%}.photo{left:5%;bottom:6%;width:30%;padding:6px 6px 20px}.photo span{bottom:4px}.steps4{grid-template-columns:repeat(2,1fr)}.rules{grid-template-columns:1fr}}
+</style></head><body>
+<header class="pg-top"><a class="crumb" href="https://yuanshuyi.com/" target="_blank"><b>Shuyi Yuan</b></a><i>/</i><span>Oil Pastel Scribble</span></header>
+<div class="demo" id="demo">
+ <div id="stage"></div>
+ <div class="dctl l" id="picker"></div>
+ <div class="dctl r"><button id="next" title="Next"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Next</span></button><button id="expand" title="Full screen"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button></div>
+</div>
+<section class="info">
+ <div class="ttl"><h1>Oil Pastel Scribble</h1><div class="acts"><button id="share" title="Copy link"><svg viewBox="0 0 24 24"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4M12 2v13"/></svg><span>Share</span></button><a class="gh" href="oil-pastel-scribble.zip" download><svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>Get the skill</a></div></div>
+ <p class="desc">A skill that turns any photo into a loose oil pastel drawing: quick scribbled strokes, white paper showing through, colour that slips past the lines. Share a photo and it finds the subject on its own, so a whole series comes out in the same hand.</p>
+ <div class="uses"><span>Uses</span><i>Agent skill</i><i>Image prompt</i><i>Style rules</i></div>
+ <div class="spec">
+  <h2>What makes it look hand-drawn</h2>
+  <ul class="rules">
+   <li><b>Scribbled, not filled.</b> Every back-and-forth stroke stays visible.</li>
+   <li><b>Paper shows through.</b> White gaps between strokes, dense in some places, sparse in others.</li>
+   <li><b>Colour misses the shape.</b> It slips past the edge in a few spots and leaves others unfilled.</li>
+   <li><b>Outlines only where needed.</b> A loose line on a cup handle or a paw, not around everything.</li>
+  </ul>
+  <h2>How it got there</h2>
+  <div class="steps4">
+   <figure><img src="img/step-1.jpg" alt="" loading="lazy"><figcaption><b>01</b>Smooth gradients and a sticker face. Looked airbrushed.</figcaption></figure>
+   <figure><img src="img/step-2.jpg" alt="" loading="lazy"><figcaption><b>02</b>Real cat features, but every edge clean and digital.</figcaption></figure>
+   <figure><img src="img/step-3.jpg" alt="" loading="lazy"><figcaption><b>03</b>Rough edges everywhere. Read as a filter.</figcaption></figure>
+   <figure class="win"><img src="img/step-4.jpg" alt="" loading="lazy"><figcaption><b>04</b>Colour not filled in all the way. This is the one.</figcaption></figure>
+  </div>
+  <h2 class="sub">Hand it off to AI</h2>
+  <p class="lead">The prompt works on its own: attach a photo in ChatGPT or any tool that makes images and paste it in. The skill adds the fixes for common problems and keeps a whole series consistent.</p>
+  <div class="row open" id="r-prompt"><div class="rh"><button class="tg" aria-expanded="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><b>Prompt</b><span>Attach a photo, then paste this into ChatGPT or any image tool</span></button><button class="cp" data-t="pText">Copy</button></div><pre id="pText" class="body">Turn this photo into a loose, hand-drawn oil pastel illustration.
+
+Coloring:
+- Quick, loose back-and-forth scribble strokes, never filled in smoothly
+- Visible white paper gaps between strokes; uneven coverage, dense in some areas, sparse and streaky in others
+- Stroke direction follows each shape and changes from area to area
+- Color goes past the edge in a few places and leaves small areas unfilled in others
+- Thick, waxy, matte oil pastel texture; no smooth gradients, no airbrush, no glossy digital look
+
+Lines and shapes:
+- Outlines only where they help define a shape
+- Edges mostly firm with a few irregular spots; never an even rough border
+- Simplify details so it reads as a quick hand drawing
+- Keep faces recognizable with simple, real features (no cartoon smile, no blush)
+- Keep meaningful text or logos legible
+
+Composition:
+- Draw only the main subject of the photo, centered
+- Plain white paper background, no ground shadow, square 1:1</pre></div>
+  <div class="row" id="r-skill"><div class="rh"><button class="tg" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><b>Skill</b><span>oil-pastel-scribble · ChatGPT, Claude, Codex, Cursor</span></button><button class="cp" data-t="iText">Copy install prompt</button></div>
+   <div class="body"><p class="note">Give this prompt to your agent to install it. In ChatGPT or the Claude app, upload the .zip in your skill settings instead.</p><pre id="iText"></pre>
+   <div class="links"><a class="cp" href="oil-pastel-scribble.zip" download>Download .zip</a><a class="cp" href="SKILL.md" target="_blank">View SKILL.md</a><a class="cp" href="https://toolkit-xi-eight.vercel.app/items/oil-pastel-scribble/" target="_blank">On my toolkit ↗</a></div></div></div>
+  <p class="lead" style="margin-top:22px;font-size:13px">Started from figuring out how the drawings on <a href="https://drago.cloud/" target="_blank" style="color:inherit">drago.cloud</a> were made.</p>
+ </div>
+</section>
+<script>
+const $=s=>document.querySelector(s);
+const SET=[['guinea-pig','Guinea pig'],['cat-house','Siamese'],['balaclava','Calico'],['dog','Dachshund'],['fridge','Bengal']];
+const stage=$('#stage'),picker=$('#picker');
+const slides=SET.map(([n,label],i)=>{const s=document.createElement('div');s.className='slide';
+ s.innerHTML=`<div class="photo"><img alt="Original photo" ${i?'loading="lazy"':''} src="img/${n}-photo.jpg"><span>original</span></div><img class="drawing" alt="Oil pastel drawing of the ${label.toLowerCase()}" ${i?'loading="lazy"':''} src="img/${n}-drawing.webp">`;
+ stage.appendChild(s);const b=document.createElement('button');b.textContent=label;b.onclick=()=>{stop();go(i)};picker.appendChild(b);return s});
+let cur=-1,timer=null;
+function go(i){if(cur>=0){slides[cur].classList.remove('on');picker.children[cur].classList.remove('on')}cur=(i+slides.length)%slides.length;slides[cur].classList.add('on');picker.children[cur].classList.add('on');
+ slides[(cur+1)%slides.length].querySelectorAll('img').forEach(im=>im.loading='eager')}
+function stop(){clearInterval(timer);timer=null}
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+go(+(new URLSearchParams(location.search).get('i')||0));
+if(!reduce&&!new URLSearchParams(location.search).has('still'))timer=setInterval(()=>go(cur+1),4200);
+$('#next').onclick=()=>{stop();go(cur+1)};
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'){stop();go(cur+1)}if(e.key==='ArrowLeft'){stop();go(cur-1)}if(e.key==='Escape')document.body.classList.remove('m-full')});
+let x0=null;stage.addEventListener('pointerdown',e=>x0=e.clientX);stage.addEventListener('pointerup',e=>{if(x0!==null&&Math.abs(e.clientX-x0)>40){stop();go(cur+(e.clientX<x0?1:-1))}x0=null});
+$('#expand').onclick=()=>document.body.classList.toggle('m-full');
+$("#iText").textContent="Install the Oil Pastel Scribble skill for me.\n1. Download https://shuyii0315-arch.github.io/oil-pastel/SKILL.md\n2. Save it as oil-pastel-scribble/SKILL.md in this tool's skills folder:\n   Claude Code: ~/.claude/skills/\n   Codex: ~/.codex/skills/\n   Cursor: ~/.cursor/skills/\n   Other agents: .agents/skills/ in this project\n3. Tell me where you saved it.\nIf I ask you to update it later, download the same file again and replace it.";
+document.querySelectorAll('.tg').forEach(b=>b.onclick=()=>{const r=b.closest('.row');r.classList.toggle('open');b.setAttribute('aria-expanded',r.classList.contains('open'))});
+document.querySelectorAll('button.cp').forEach(b=>b.onclick=async()=>{const s=$('#'+b.dataset.t).textContent,o=b.textContent;try{await navigator.clipboard.writeText(s);b.textContent='Copied'}catch(e){prompt('Copy',s.slice(0,2000))}setTimeout(()=>b.textContent=o,1500)});
+$('#share').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);$('#share span').textContent='Copied'}catch(e){prompt('Copy link',location.href)}setTimeout(()=>$('#share span').textContent='Share',1500)};
+</script>
+</body></html>
